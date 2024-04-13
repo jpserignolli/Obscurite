@@ -1,7 +1,8 @@
 package p.i;
 
 import java.awt.EventQueue;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -37,7 +38,31 @@ public class obscuriteProduto extends JFrame {
 			}
 		});
 	}
-
+	private String obterIdProduto(String nomeProduto) {
+        String idProduto = null;
+        if (nomeProduto.equals("Camiseta Lisa")) {
+            idProduto = "001";
+        } else if (nomeProduto.equals("Bermuda Jeans")) {
+            idProduto = "002";
+        } else if (nomeProduto.equals("Bermuda Cargo")) {
+            idProduto = "003";
+        } else if (nomeProduto.equals("Calça de moletom")) {
+            idProduto = "004";
+        } else if (nomeProduto.equals("Calça Jeans ")) {
+            idProduto = "005";
+        } else if (nomeProduto.equals("Calça cargo ")) {
+            idProduto = "006";
+        } else if (nomeProduto.equals("Boné NewEra")) {
+            idProduto = "101";
+        } else if (nomeProduto.equals("Boné Nike")) {
+            idProduto = "102";
+        } else if (nomeProduto.equals("Boné Lacoste")) {
+            idProduto = "103";
+        } else if (nomeProduto.equals("Boné Adidas")) {
+            idProduto = "104";
+        }
+        return idProduto;
+    }
 	/**
 	 * Create the frame.
 	 */
@@ -74,12 +99,14 @@ public class obscuriteProduto extends JFrame {
 		JButton btnRegistro2 = new JButton("Registrar");
 		btnRegistro2.setForeground(new Color(50, 205, 50));
 		btnRegistro2.setFont(new Font("Libian TC", Font.PLAIN, 18));
-		btnRegistro2.setBounds(257, 201, 187, 46);
+		btnRegistro2.setBounds(257, 301, 187, 46);
 		panel.add(btnRegistro2);
 		
 		JComboBox comboBoxProdutos = new JComboBox();
 		comboBoxProdutos.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		comboBoxProdutos.setBounds(257, 35, 187, 46);
+		comboBoxProdutos.addItem("Roupa");
+        comboBoxProdutos.addItem("Acessórios");
 		panel.add(comboBoxProdutos);
 		
 		JLabel lblCategoria = new JLabel("Categoria");
@@ -99,15 +126,56 @@ public class obscuriteProduto extends JFrame {
 		comboBoxProdutos_1.setBounds(257, 93, 187, 46);
 		panel.add(comboBoxProdutos_1);
 		
-		JLabel lblIdProduto = new JLabel("ID PRODUTO");
+		comboBoxProdutos.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                comboBoxProdutos_1.removeAllItems();
+
+                String categoriaSelecionada = (String) comboBoxProdutos.getSelectedItem();
+
+                if (categoriaSelecionada.equals("Roupa")) {
+                	comboBoxProdutos_1.addItem("Camiseta Lisa");
+                    comboBoxProdutos_1.addItem("Bermuda Jeans");
+                    comboBoxProdutos_1.addItem("Bermuda Cargo");
+                    comboBoxProdutos_1.addItem("Calça de moletom");
+                    comboBoxProdutos_1.addItem("Calça Jeans ");
+                    comboBoxProdutos_1.addItem("Calça cargo ");
+                } else if (categoriaSelecionada.equals("Acessórios")) {
+                    comboBoxProdutos_1.addItem("Boné NewEra");
+                    comboBoxProdutos_1.addItem("Boné Nike");
+                    comboBoxProdutos_1.addItem("Boné Lacoste");
+                    comboBoxProdutos_1.addItem("Boné Adidas");
+                }
+            }
+        });
+		
+		JLabel lblIdProduto = new JLabel("ID");
 		lblIdProduto.setForeground(new Color(50, 205, 50));
 		lblIdProduto.setFont(new Font("Lao MN", Font.PLAIN, 16));
-		lblIdProduto.setBounds(303, 137, 129, 16);
+		lblIdProduto.setBounds(325, 160, 160, 16);
 		panel.add(lblIdProduto);
 		
+		
+		
+		JLabel lblPreco = new JLabel("Preço");
+		lblPreco.setForeground(new Color(50, 205, 50));
+		lblPreco.setFont(new Font("Lao MN", Font.PLAIN, 16));
+		lblPreco.setBounds(330, 180, 187, 46);
+		panel.add(lblPreco);
+		
 		textField = new JTextField();
-		textField.setBounds(257, 163, 187, 26);
+		textField.setBounds(257, 220, 187, 26);
 		panel.add(textField);
 		textField.setColumns(10);
+		
+		
+		
+		comboBoxProdutos_1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String produtoSelecionado = (String) comboBoxProdutos_1.getSelectedItem();
+
+                String idProduto = obterIdProduto(produtoSelecionado);
+                lblIdProduto.setText("ID: " + idProduto);
+            }
+        });
 	}
 }
