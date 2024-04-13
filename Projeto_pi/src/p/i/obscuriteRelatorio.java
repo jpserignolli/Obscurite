@@ -81,6 +81,18 @@ public class obscuriteRelatorio extends JFrame {
 		comboBoxProdutos_1.setBounds(761, 165, 187, 46);
 		contentPane.add(comboBoxProdutos_1);
 		comboBoxProdutos_1.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		comboBoxProdutos_1.addItem("Janeiro");
+        comboBoxProdutos_1.addItem("Fevereiro");
+        comboBoxProdutos_1.addItem("Março");
+        comboBoxProdutos_1.addItem("Abril");
+        comboBoxProdutos_1.addItem("Maio");
+        comboBoxProdutos_1.addItem("Junho");
+        comboBoxProdutos_1.addItem("Julho");
+        comboBoxProdutos_1.addItem("Agosto");
+        comboBoxProdutos_1.addItem("Setembro");
+        comboBoxProdutos_1.addItem("Outubro");
+        comboBoxProdutos_1.addItem("Novembro");
+        comboBoxProdutos_1.addItem("Dezembro");
 		
 		JLabel lblMes = new JLabel("Mes");
 		lblMes.setBounds(836, 151, 75, 16);
